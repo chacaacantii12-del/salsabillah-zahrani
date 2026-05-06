@@ -157,7 +157,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>produk</h1>
+      <h1>Produk</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>

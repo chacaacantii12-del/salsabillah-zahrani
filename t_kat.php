@@ -1,3 +1,31 @@
+<<?php
+include "koneksi.php";
+
+$auto = mysqli_query($conn, "select max(kd_kat) as max_code from categories");
+$hasil = mysqli_fetch_array($auto);
+$code = $hasil['max_code'];
+if ($code == NULL) {
+    $urutan = 0;
+} else {
+    $urutan = (int) substr($code, 1, 3);
+}
+$urutan++;
+$huruf = "K";
+$kd_kat = $huruf . sprintf("%03s", $urutan);
+
+if (isset($_POST['simpan'])) {
+    $nm_kat = $_POST['nm_kat'];
+
+    $query = mysqli_query($conn, "INSERT INTO categories(kd_kat, category_name) VALUES ('$kd_kat', '$nm_kat')");
+    if ($query) {
+        echo "<script>alert('Data berhasil ditambahkan!')</script>";
+        header("refresh:0, kategori_produk.php");
+    } else {
+        echo "<script>alert('Data gagal ditambahkan!')</script>";
+        header("refresh:0, kategori_produk.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,86 +33,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - CACA</title>
+  <title>Kategori Produk  - CACA </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">CACA</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">   </span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="login.php">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -101,11 +56,13 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
+ <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -166,7 +123,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="login.php">
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -180,7 +137,7 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
+   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -193,14 +150,14 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="kategori_produk.php">
+        <a class="nav-link collapsed" href="kategori_produk.php">
           <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="produk.php">
+        <a class="nav-link " href="produk.php">
           <i class="bi bi-box"></i>
           <span>Data Produk</span>
         </a>
@@ -231,60 +188,55 @@
       <h1>Kategori Produk</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-          <li class="breadcrumb-item active">Kategori Produk</li>
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item active">Tambah</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-<div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body mt-3">
-                <a href="t_kat.php" class="btn btn-primary">Tambah Data</a>
-            </div>
-        </div>
-    </div>
-</div>
-
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
+
+         
+              
+              
+        
+
+        
 
           <div class="card">
-            <div class="card-body mt-3">
-        
-             <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Kode Kategori</th>
-                    <th scope="col">Kategori Produk</th>
-                    <th scope="col">Aksi</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "koneksi.php";
-                  $no = 1;
-                  $sql = mysqli_query($conn, "SELECT * FROM categories");
-                  while ($data = mysqli_fetch_array($sql)) {
-                  ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $data['kd_kat']; ?></td>
-                      <td><?php echo $data['category_name']; ?></td>
-                      <td>
-                        <a href="e_kat.php?id=<?php echo $data['id']; ?>" class="btn btn-warning">Edit</a>
-                        <a href="h_kat.php?id=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">Hapus</a>
-                      </td>
-                    </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+            <div class="card-body">
+              <h5 class="card-title">Tambah Kategori Produk</h5>
+
+              <!-- Vertical Form -->
+              <form class="row g-3" method="post">
+                <div class="col-12">
+                  <label for="kd_kat" class="form-label">Kode Kategori</label>
+                  <input type="text" class="form-control" id="kd_kat" name= "kd_kat" value="<?php echo $kd_kat; ?>" readonly>
+                </div>
+                <div class="col-12">
+                  <label for="nm_kat" class="form-label">Nama Kategori</label>
+                  <input type="text" class="form-control" id="nm_kat" name="nm_kat" required>
+                </div>
+                
+                <div class="text-center">
+                  <button type="submit" class="btn btn-warning"><a href= "Kategori_Produk.php"
+                  style="color: black; text-decoration:none;">kembali</a></button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button type="submit" class="btn btn-success" name="simpan">Simpan</button>
+                </div>
+              </form><!-- Vertical Form -->
+
+            </div>
+          </div>
+
+         
+
+            </div>
+          </div>
+
+          
 
             </div>
           </div>
@@ -298,7 +250,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>CACA</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
