@@ -1,4 +1,19 @@
 <?php
+
+session_start();
+
+include "koneksi.php";
+
+// Cek apakah user sudah login
+if (!isset($_SESSION["login"])) {
+
+    header("Location: login.php");
+    exit;
+
+}
+
+?>
+<?php
 include "koneksi.php";
 session_start();
 
@@ -39,7 +54,7 @@ if (isset($_POST['submit'])) {
         ('$product_id', '$change_type', '$qty', '$stock_before', '$stock_after', '$note', '$user_id')
     ");
 
-    header("Location: stok.php?success=1");
+    header("Location: stock.php?success=1");
     exit;
 }
 ?>
@@ -50,7 +65,7 @@ if (isset($_POST['submit'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Stock -CACA</title>
+  <title>Manajemen Stok - CACA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -76,7 +91,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-<?php if (isset($_GET['success'])): ?>
+  <?php if (isset($_GET['success'])): ?>
 <script>
     alert('Stok berhasil diperbarui!');
 </script>
@@ -95,64 +110,57 @@ if (isset($_POST['submit'])) {
 
 
     <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+
+    <ul class="d-flex align-items-center">
+
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          </a><!-- End Profile Iamge Icon -->
+            <a class="nav-link nav-profile d-flex align-items-center pe-0"
+               href="#"
+               data-bs-toggle="dropdown">
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+                <img src="assets/img/profile-img.jpg"
+                     alt="Profile"
+                     class="rounded-circle" />
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            </a><!-- End Profile Image Icon -->
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+                <li class="dropdown-header">
+                    <h6>
+                        <?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?>
+                    </h6>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+                    <span>
+                        <?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?>
+                    </span>
+                </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
 
-      </ul>
-    </nav><!-- End Icons Navigation -->
+                <li>
+                    <a class="dropdown-item d-flex align-items-center"
+                       href="logout.php">
+
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Sign Out</span>
+
+                    </a>
+                </li>
+
+            </ul>
+            <!-- End Profile Dropdown Items -->
+
+        </li>
+        <!-- End Profile Nav -->
+
+    </ul>
+
+</nav>
+<!-- End Icons Navigation -->
 
   </header><!-- End Header -->
 
@@ -191,7 +199,7 @@ if (isset($_POST['submit'])) {
       <li class="nav-item">
         <a class="nav-link collapsed" href="users.php">
           <i class="bi bi-people"></i>
-          <span>Manajemen Stok</span>
+          <span>Manajemen User</span>
         </a>
       </li><!-- End Register Page Nav -->
     </ul>
@@ -201,12 +209,13 @@ if (isset($_POST['submit'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Manajemen Stok</h1>
+      <h1>Stock Produk</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
           <li class="breadcrumb-item">Data Produk</li>
-          <li class="breadcrumb-item active">Manajemen Stok</li>
+          <li class="breadcrumb-item active">Manajemen Stock</li>
+
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -218,7 +227,7 @@ if (isset($_POST['submit'])) {
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Manajemen Stok</h5>
+                    <h5 class="card-title">Manajemen Stock</h5>
 
                     <form method="POST">
 
@@ -351,7 +360,7 @@ if (isset($_POST['submit'])) {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://bootstrapmade.com/">Salsabillah Zahrani</a>
     </div>
   </footer><!-- End Footer -->
 
