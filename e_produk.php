@@ -19,9 +19,9 @@ if (isset($_POST['update'])) {
         $allowed = ["jpg", "jpeg", "png", "webp"];
 
         if (in_array($ext, $allowed)) {
-            $imgnew= md5(time() . $imgfile) . "." . $ext;
+            $imgnew = md5(time() . $imgfile) . "." . $ext;
             move_uploaded_file($tmp, "produk_img/" . $imgnew);
-        
+
             $update = mysqli_query($conn, "UPDATE products SET 
             category_id = '$id_kategori',
             product_name = '$nm_produk',
@@ -32,8 +32,8 @@ if (isset($_POST['update'])) {
             WHERE id = '$id'
             ");
         } else {
-        echo "<script>alert('Format gambar tidak valid');</script>";
-        return;
+            echo "<script>alert('Format gambar tidak valid');</script>";
+            return;
         }
     } else {
         //Tanpa ganti gambar 
@@ -100,53 +100,53 @@ if (!isset($_SESSION['login'])) {
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">CACA</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="index.php" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">CACA</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
 
-<nav class="header-nav ms-auto">
-  <ul class="d-flex align-items-center">
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
 
-    <li class="nav-item dropdown pe-3">
-      <a
-        class="nav-link nav-profile d-flex align-items-center pe-0"
-        href="#"
-        data-bs-toggle="dropdown">
-        <img
-          src="assets/img/profile-img.jpg"
-          alt="Profile"
-          class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
+                <li class="nav-item dropdown pe-3">
+                    <a
+                        class="nav-link nav-profile d-flex align-items-center pe-0"
+                        href="#"
+                        data-bs-toggle="dropdown">
+                        <img
+                            src="assets/img/profile-img.jpg"
+                            alt="Profile"
+                            class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
 
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-        <li class="dropdown-header">
-          <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
-          <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
-        </li>
+                    <ul
+                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
+                            <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
+                        </li>
 
-        <li>
-          <hr class="dropdown-divider" />
-        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
 
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="logout.php">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sign Out</span>
-          </a>
-        </li>
-      </ul><!-- End Profile Dropdown Items -->
-    </li><!-- End Profile Nav -->
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
 
-  </ul>
-</nav><!-- End Icons Navigation -->
-  </header><!-- End Header -->
+            </ul>
+        </nav><!-- End Icons Navigation -->
+    </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -254,9 +254,9 @@ if (!isset($_SESSION['login'])) {
                                     <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
                                 </div>
                                 <div class="text-center">
-                                <button type="button" class="btn btn-warning"><a href="kategori_produk.php" style="color: black; text-decoration:none;">Kembali</a></button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                                <button type="submit" class="btn btn-success" name="update">Update</button>
+                                    <button type="button" class="btn btn-warning"><a href="kategori_produk.php" style="color: black; text-decoration:none;">Kembali</a></button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                    <button type="submit" class="btn btn-success" name="update">Update</button>
                                 </div>
                             </form><!-- Vertical Form -->
 

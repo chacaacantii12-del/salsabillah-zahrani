@@ -4,8 +4,8 @@ include "koneksi.php";
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
-    exit;
+  header("Location: login.php");
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ if (!isset($_SESSION['login'])) {
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">  <!-- ======= Header ======= -->
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -32,41 +32,41 @@ if (!isset($_SESSION['login'])) {
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-<nav class="header-nav ms-auto">
-  <ul class="d-flex align-items-center">
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
 
-    <li class="nav-item dropdown pe-3">
-      <a
-        class="nav-link nav-profile d-flex align-items-center pe-0"
-        href="#"
-        data-bs-toggle="dropdown">
-        <img
-          src="assets/img/profile-img.jpg"
-          alt="Profile"
-          class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
+        <li class="nav-item dropdown pe-3">
+          <a
+            class="nav-link nav-profile d-flex align-items-center pe-0"
+            href="#"
+            data-bs-toggle="dropdown">
+            <img
+              src="assets/img/profile-img.jpg"
+              alt="Profile"
+              class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
 
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-        <li class="dropdown-header">
-          <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
-          <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
-        </li>
+          <ul
+            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
+              <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
+            </li>
 
-        <li>
-          <hr class="dropdown-divider" />
-        </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
 
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="logout.php">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sign Out</span>
-          </a>
-        </li>
-      </ul><!-- End Profile Dropdown Items -->
-    </li><!-- End Profile Nav -->
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
 
-  </ul>
-</nav><!-- End Icons Navigation -->
+      </ul>
+    </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
 
@@ -100,41 +100,41 @@ if (!isset($_SESSION['login'])) {
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-   <nav class="header-nav ms-auto">
-  <ul class="d-flex align-items-center">
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
 
-    <li class="nav-item dropdown pe-3">
-      <a
-        class="nav-link nav-profile d-flex align-items-center pe-0"
-        href="#"
-        data-bs-toggle="dropdown">
-        <img
-          src="assets/img/profile-img.jpg"
-          alt="Profile"
-          class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
+        <li class="nav-item dropdown pe-3">
+          <a
+            class="nav-link nav-profile d-flex align-items-center pe-0"
+            href="#"
+            data-bs-toggle="dropdown">
+            <img
+              src="assets/img/profile-img.jpg"
+              alt="Profile"
+              class="rounded-circle" /> </a><!-- End Profile Iamge Icon -->
 
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-        <li class="dropdown-header">
-          <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
-          <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
-        </li>
+          <ul
+            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6><?php echo isset($_SESSION['name']) ? $_SESSION['name'] : 'User'; ?></h6>
+              <span><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Role'; ?></span>
+            </li>
 
-        <li>
-          <hr class="dropdown-divider" />
-        </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
 
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="logout.php">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sign Out</span>
-          </a>
-        </li>
-      </ul><!-- End Profile Dropdown Items -->
-    </li><!-- End Profile Nav -->
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
 
-  </ul>
-</nav><!-- End Icons Navigation -->
+      </ul>
+    </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
 
@@ -194,16 +194,16 @@ if (!isset($_SESSION['login'])) {
         </ol>
       </nav>
     </div><!-- End Page Title -->
-<div class="row">
-        <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
 
-          <div class="card">
-            <div class="card-body mt-3">
-                <a href="t_kat.php" class="btn btn-primary">Tambah Data</a>
-            </div>
+        <div class="card">
+          <div class="card-body mt-3">
+            <a href="t_kat.php" class="btn btn-primary">Tambah Data</a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
     <section class="section">
       <div class="row">
@@ -211,8 +211,8 @@ if (!isset($_SESSION['login'])) {
 
           <div class="card">
             <div class="card-body mt-3">
-        
-             <!-- Table with stripped rows -->
+
+              <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
@@ -220,7 +220,7 @@ if (!isset($_SESSION['login'])) {
                     <th scope="col">Kode Kategori</th>
                     <th scope="col">Kategori Produk</th>
                     <th scope="col">Aksi</th>
-                    
+
                   </tr>
                 </thead>
                 <tbody>
