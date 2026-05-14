@@ -169,7 +169,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body mt-3">
-              <a href="t_produk.php" class="btn btn-dark">Tambah Data</a>
+              <a href="t_produk.php" class="btn btn-primary">Tambah Data</a>
               <a href="stock.php" class="btn btn-dark">Stok</a>
             </div> 
           </div>

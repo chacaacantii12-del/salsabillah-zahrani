@@ -139,9 +139,9 @@
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="users.php">
+        <a class="nav-link " href="user.php">
           <i class="bi bi-people"></i>
-          <span>Manajemen Users</span>
+          <span>Manajemen User</span>
         </a>
       </li><!-- End Register Page Nav -->
     </ul>
@@ -160,85 +160,92 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <div class="row">
-      <div class="coll-lg-12">
-
-      </div class="card">
-      <div class="card-body mt-3">
-        <a href="t_user.php" class="btn btn-primary">Tambah Data</a>
-      </div>
-    </div>
-    </div>
-    </div>
-
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
-
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Dibuat</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <?php
-                include "koneksi.php";
-                $no = 1;
-
-                $sql = mysqli_query($conn, "SELECT * FROM users");
-
-                while ($data = mysqli_fetch_array($sql)) {
-                ?>
-
-                  <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $data['name']; ?></td>
-                    <td><?php echo $data['email']; ?></td>
-                    <td><?php echo ucfirst($data['role']); ?></td>
-
-                    <td>
-                      <?php
-                      if ($data['is_active'] == 1) {
-                        echo '<span class="badge bg-success">Aktif</span>';
-                      } else {
-                        echo '<span class="badge bg-danger">Nonaktif</span>';
-                      }
-                      ?>
-                    </td>
-
-                    <td>
-                      <?php echo date('d-m-Y H:i', strtotime($data['created_at'])); ?>
-                    </td>
-
-                    <td>
-                      <a href="e_user.php?id=<?php echo $data['id']; ?>"
-                        class="btn btn-warning btn-sm">Edit</a>
-
-                      <a href="h_user.php?id=<?php echo $data['id']; ?>"
-                        class="btn btn-danger btn-sm">Hapus</a>
-                    </td>
-                  </tr>
-
-                <?php } ?>
-              </table>
-              <!-- End Table with stripped rows -->
-
+            <div class="card-body mt-3">
+              <a href="t_user.php" class="btn btn-primary"> Tambah Data</a>
             </div>
           </div>
-
         </div>
+      </div>
+      <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body mt-3">
+
+      <!-- Table with stripped rows -->
+      <table class="table datatable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Dibuat</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          include "koneksi.php";
+
+          $no = 1;
+          $sql = mysqli_query($conn, "SELECT * FROM users");
+
+          while ($data = mysqli_fetch_array($sql)) {
+          ?>
+
+            <tr>
+              <td><?php echo $no++; ?></td>
+
+              <td><?php echo $data['name']; ?></td>
+
+              <td><?php echo $data['email']; ?></td>
+
+              <td><?php echo ucfirst($data['role']); ?></td>
+
+              <td>
+                <?php
+                if ($data['is_active'] == 1) {
+                  echo '<span class="badge bg-success">Aktif</span>';
+                } else {
+                  echo '<span class="badge bg-danger">Nonaktif</span>';
+                }
+                ?>
+              </td>
+
+              <td>
+                <?php echo date('d-m-Y H:i', strtotime($data['created_at'])); ?>
+              </td>
+
+              <td>
+                <a href="e_user.php?id=<?php echo $data['id']; ?>"
+                  class="btn btn-warning btn-sm">
+                  Edit
+                </a>
+
+                <a href="h_user.php?id=<?php echo $data['id']; ?>"
+                  class="btn btn-danger btn-sm"
+                  onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                  Hapus
+                </a>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+      <!-- End Table with stripped rows -->
+
+      </div>
+      </div>
+
+      </div>
       </div>
     </section>
 
@@ -254,7 +261,7 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://www.instagram.com/salsabilaazrn_/">Salsabillah Zahrani</a>
     </div>
   </footer><!-- End Footer -->
 
